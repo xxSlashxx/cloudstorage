@@ -30,11 +30,12 @@ public class FileController extends BaseController {
 
     @PostMapping
     public String addFile(Authentication authentication, @ModelAttribute FileForm fileForm, Model model) {
-        System.out.println("@postFile");
         String error = null;
         User user = userService.getUser(authentication.getName());
 
-        if (fileService.filenameExistsForUser(fileForm.getFiledata().getOriginalFilename(), user.getUserid())) {
+        if (fileForm.getFiledata().isEmpty()) {
+            error = "Please select a file!";
+        } else if (fileService.filenameExistsForUser(fileForm.getFiledata().getOriginalFilename(), user.getUserid())) {
             error = "The filename already exists.";
         }
 
