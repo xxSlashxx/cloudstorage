@@ -31,13 +31,13 @@ public class NoteController extends BaseController {
             noteForm.setUserid(user.getUserid());
             int rowsAdded = noteService.addNote(noteForm);
 
-            if (rowsAdded < 0) {
+            if (rowsAdded <= 0) {
                 error = "There was an error adding the note. Please try again.";
             }
         } else {
             int rowsUpdated = noteService.updateNote(noteForm);
 
-            if (rowsUpdated < 0) {
+            if (rowsUpdated <= 0) {
                 error = "There was an error updating the note. Please try again.";
             }
         }
