@@ -81,6 +81,7 @@ public abstract class BaseTest {
 		// You may have to modify the element "success-msg" and the sign-up
 		// success message below depening on the rest of your code.
 		*/
+        webDriverWait.until(ExpectedConditions.visibilityOfElementLocated(By.id("success-msg")));
         Assertions.assertTrue(driver.findElement(By.id("success-msg")).getText().contains("You successfully signed up!"));
     }
 
